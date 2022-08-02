@@ -6,12 +6,7 @@ export interface ButtonProps {
   color?: string;
 }
 
-function Button({
-  label,
-  backgroundColor = "red",
-  size = "md",
-  handleClick,
-}: ButtonProps) {
+function Button({ label, backgroundColor, size, handleClick }: ButtonProps) {
   let scale = 1;
   if (size === "sm") scale = 0.75;
   if (size === "lg") scale = 1.5;

@@ -22,3 +22,24 @@ BlueButton.args = {
   backgroundColor: "blue",
   size: "md",
 };
+
+export const SmButton = Template.bind({});
+SmButton.args = {
+  label: "Small Button",
+  backgroundColor: "gray",
+  size: "sm",
+};
+
+export const LgButton = Template.bind({});
+LgButton.args = {
+  label: "Large Button",
+  backgroundColor: "gray",
+  size: "lg",
+};
+
+export const MainButton = Template.bind({});
+MainButton.args = {
+  label: "Main Button",
+  backgroundColor: "brown",
+  size: "md",
+};
