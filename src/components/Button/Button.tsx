@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
-
 export interface ButtonProps {
-  handleClick: () => void;
-  label: string;
-  size: "sm" | "md" | "lg";
-  backgroundColor: string;
+  handleClick?: () => void;
+  label?: string;
+  size?: "sm" | "md" | "lg";
+  backgroundColor?: string;
+  color?: string;
 }
 
 function Button({
@@ -20,6 +19,7 @@ function Button({
     backgroundColor,
     padding: `${scale * 0.5}rem ${scale * 1}rem`,
     border: "none",
+    color: "white",
   };
   return (
     <button onClick={handleClick} style={style}>
@@ -27,12 +27,5 @@ function Button({
     </button>
   );
 }
-
-Button.propTypes = {
-  label: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(["sm", "md", "lg"]),
-  handleClick: PropTypes.func,
-};
 
 export default Button;
