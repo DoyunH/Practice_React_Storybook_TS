@@ -24,3 +24,4 @@ function Button({ label, backgroundColor, size, handleClick }: ButtonProps) {
 }
 
 export default Button;
+
