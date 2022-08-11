@@ -1,14 +1,14 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 
-import CheckBox, { CheckBoxProps } from "./CheckBox";
+import Task, { TaskProps } from "./Task";
 
 export default {
-  component: CheckBox,
-  title: "CheckBox",
+  component: Task,
+  title: "Task",
 } as Meta;
 
-const Template: Story<CheckBoxProps> = (args) => <CheckBox {...args} />;
+const Template: Story<TaskProps> = (args) => <Task {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

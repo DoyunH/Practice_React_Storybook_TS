@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export interface CheckBoxProps {
+export interface TaskProps {
   task: {
     id?: string;
     title?: string;
@@ -11,11 +11,11 @@ export interface CheckBoxProps {
   onPinTask: (id?: string) => void;
 }
 
-export default function CheckBox({
+export default function Task({
   task: { id, title, state },
   onArchiveTask,
   onPinTask,
-}: CheckBoxProps) {
+}: TaskProps) {
   return (
     <div className="list-item">
       <label
@@ -56,7 +56,7 @@ export default function CheckBox({
   );
 }
 
-CheckBox.propTypes = {
+Task.propTypes = {
   /** Composition of the task */
   task: PropTypes.shape({
     /** Id of the task */
