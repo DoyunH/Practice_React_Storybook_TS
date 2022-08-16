@@ -18,6 +18,10 @@ export default function Task({
 }: TaskProps) {
   return (
     <div className="list-item">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      />
       <label
         htmlFor="checked"
         aria-label={`archiveTask-${id}`}
@@ -49,7 +53,11 @@ export default function Task({
           aria-label={`pinTask-${id}`}
           key={`pinTask-${id}`}
         >
-          <span className={`icon-star`} />
+          {state === "TASK_PINNED" ? (
+            <span className="material-symbols-outlined pinned">star</span>
+          ) : (
+            <span className="material-symbols-outlined">star</span>
+          )}
         </button>
       )}
     </div>
