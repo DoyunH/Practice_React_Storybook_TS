@@ -43,7 +43,10 @@ export default function TaskList({
     return (
       <div className="list-items" key={"empty"} data-testid="empty">
         <div className="wrapper-message">
-          <span className="icon-check" />
+          <img
+            alt="checked"
+            src="https://img.icons8.com/color/96/000000/checked-checkbox.png"
+          />
           <div className="title-message">You have no tasks</div>
           <div className="subtitle-message">Sit back and relax</div>
         </div>

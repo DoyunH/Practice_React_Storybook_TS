@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+.list-items {
+  display: flex;
+  padding: 2rem 1rem;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+
 .list-item {
   display: flex;
   align-items: center;
@@ -62,6 +70,30 @@ code {
 
 .material-symbols-outlined.pinned {
   font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 200, "opsz" 48;
+}
+
+.wrapper-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.icon-check {
+  background-image: url("https://img.icons8.com/color/96/000000/checked-checkbox.png");
+  font-size: 3rem;
+  color: #4caf50;
+}
+
+.wrapper-message .title-message {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.wrapper-message .subtitle-message {
+  font-size: 1rem;
+  color: #999;
 }
 
 @keyframes glow {
