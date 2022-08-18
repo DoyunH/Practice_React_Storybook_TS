@@ -1,23 +1,43 @@
 import React from "react";
-
 import Task from "../Task/Task";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTaskState } from "../../lib/store";
 
 export interface TaskListProps {
   tasks: Array<any>;
   loading?: boolean;
-  onPinTask: (id?: string) => void;
-  onArchiveTask: (id?: string) => void;
+  pinTask?: (id?: string) => void;
+  archiveTask?: (id?: string) => void;
+  status: string;
 }
 
-export default function TaskList({
-  loading,
-  tasks,
-  onPinTask,
-  onArchiveTask,
-}: TaskListProps) {
+export default function TaskList({ loading }: TaskListProps) {
+  const tasks = useSelector((state: any) => {
+    const tasksInOrder = [
+      ...state.taskbox.tasks.filter((t: any) => t.state === "TASK_PINNED"),
+      ...state.taskbox.tasks.filter((t: any) => t.state !== "TASK_PINNED"),
+    ];
+    const filteredTasks = tasksInOrder.filter(
+      (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
+    );
+    return filteredTasks;
+  });
+
+  const { status } = useSelector((state: any) => state.taskbox);
+
+  const dispatch = useDispatch();
+
+  const pinTask = (value: any) => {
+    // We're dispatching the Pinned event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: "TASK_PINNED" }));
+  };
+  const archiveTask = (value: any) => {
+    // We're dispatching the Archive event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: "TASK_ARCHIVED" }));
+  };
   const events = {
-    onPinTask,
-    onArchiveTask,
+    pinTask,
+    archiveTask,
   };
   const LoadingRow = (
     <div className="list-item">
@@ -27,7 +47,7 @@ export default function TaskList({
       </span>
     </div>
   );
-  if (loading) {
+  if (status === loading) {
     return (
       <div className="list-items" data-testid="loading" key={"loading"}>
         {LoadingRow}
@@ -54,13 +74,9 @@ export default function TaskList({
     );
   }
 
-  const tasksInOrder = [
-    ...tasks.filter((t) => t.state === "TASK_PINNED"),
-    ...tasks.filter((t) => t.state !== "TASK_PINNED"),
-  ];
   return (
     <div className="list-items">
-      {tasksInOrder.map((task) => (
+      {tasks.map((task) => (
         <Task key={task.id} task={task} {...events} />
       ))}
     </div>

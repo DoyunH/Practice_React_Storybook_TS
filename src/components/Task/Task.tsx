@@ -7,14 +7,14 @@ export interface TaskProps {
     title?: string;
     state?: any;
   };
-  onArchiveTask: (id?: string) => void;
-  onPinTask: (id?: string) => void;
+  archiveTask: (id?: string) => void;
+  pinTask: (id?: string) => void;
 }
 
 export default function Task({
   task: { id, title, state },
-  onArchiveTask,
-  onPinTask,
+  archiveTask,
+  pinTask,
 }: TaskProps) {
   return (
     <div className="list-item">
@@ -34,7 +34,7 @@ export default function Task({
           id={`archiveTask-${id}`}
           checked={state === "TASK_ARCHIVED"}
         />
-        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
+        <span className="checkbox-custom" onClick={() => archiveTask(id)} />
       </label>
       <label htmlFor="title" aria-label={title} className="title">
         <input
@@ -48,7 +48,7 @@ export default function Task({
       {state !== "TASK_ARCHIVED" && (
         <button
           className="pin-button"
-          onClick={() => onPinTask(id)}
+          onClick={() => pinTask(id)}
           id={`pinTask-${id}`}
           aria-label={`pinTask-${id}`}
           key={`pinTask-${id}`}
