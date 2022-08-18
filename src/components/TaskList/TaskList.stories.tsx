@@ -33,9 +33,11 @@ const Mockstore = ({ taskboxState, children }: MockStorePropsType) => (
           name: "taskbox",
           initialState: taskboxState,
           reducers: {
-            updateTaskState: (state, action) => {
+            updateTaskState: (state: any, action) => {
               const { id, newTaskState } = action.payload;
-              const task = state.tasks.findIndex((task) => task.id === id);
+              const task = state.tasks?.findIndex(
+                (task: { id: any }) => task.id === id
+              );
               if (task >= 0) {
                 state.tasks[task].state = newTaskState;
               }

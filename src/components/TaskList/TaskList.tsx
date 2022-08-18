@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTaskState } from "../../lib/store";
 
 export interface TaskListProps {
-  tasks: Array<any>;
+  tasks?: Array<any>;
   loading?: boolean;
   pinTask?: (id?: string) => void;
   archiveTask?: (id?: string) => void;
-  status: string;
+  status?: string;
 }
 
 export default function TaskList({ loading }: TaskListProps) {
