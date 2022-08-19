@@ -5,13 +5,13 @@ import { updateTaskState } from "../../lib/store";
 
 export interface TaskListProps {
   tasks?: Array<any>;
-  loading?: boolean;
+  loading?: string;
   pinTask?: (id?: string) => void;
   archiveTask?: (id?: string) => void;
   status?: string;
 }
 
-export default function TaskList({ loading }: TaskListProps) {
+export default function TaskList({ loading, status }: TaskListProps) {
   const tasks = useSelector((state: any) => {
     const tasksInOrder = [
       ...state.taskbox.tasks.filter((t: any) => t.state === "TASK_PINNED"),
@@ -22,8 +22,6 @@ export default function TaskList({ loading }: TaskListProps) {
     );
     return filteredTasks;
   });
-
-  const { status } = useSelector((state: any) => state.taskbox);
 
   const dispatch = useDispatch();
 
