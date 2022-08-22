@@ -4,14 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTaskState } from "../../lib/store";
 
 export interface TaskListProps {
-  tasks?: Array<any>;
-  loading?: string;
-  pinTask?: (id?: string) => void;
-  archiveTask?: (id?: string) => void;
-  status?: string;
+  error?: any;
+  status: string;
+  tasks: Array<{
+    id: string;
+    state?: any;
+    title: string;
+  }>;
 }
 
-export default function TaskList({ loading, status }: TaskListProps) {
+export default function TaskList() {
   const tasks = useSelector((state: any) => {
     const tasksInOrder = [
       ...state.taskbox.tasks.filter((t: any) => t.state === "TASK_PINNED"),
@@ -21,6 +23,10 @@ export default function TaskList({ loading, status }: TaskListProps) {
       (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
     );
     return filteredTasks;
+  });
+
+  const status = useSelector((state: any) => {
+    return state.taskbox.status;
   });
 
   const dispatch = useDispatch();
@@ -45,7 +51,7 @@ export default function TaskList({ loading, status }: TaskListProps) {
       </span>
     </div>
   );
-  if (status === loading) {
+  if (status === "Loading") {
     return (
       <div className="list-items" data-testid="loading" key={"loading"}>
         {LoadingRow}

@@ -60,7 +60,7 @@ export default {
   excludeStories: /.*MockedState$/,
 } as Meta;
 
-const Template: Story<TaskListProps> = (args) => <TaskList {...args} />;
+const Template: Story<TaskListProps> = (args: any) => <TaskList {...args} />;
 
 export const Default = Template.bind({});
 Default.decorators = [
@@ -88,7 +88,7 @@ Loading.decorators = [
     <Mockstore
       taskboxState={{
         ...MockedState,
-        status: "loading",
+        status: "Loading",
       }}
     >
       {story()}
