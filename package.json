@@ -25,7 +25,8 @@
     "test:coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "chromatic": "npx chromatic --project-token=77cbfe41c058"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -78,5 +79,7 @@
     "chromatic": "^6.7.4",
     "prop-types": "^15.8.1",
     "webpack": "^5.74.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "practice-storybook@0.1.0"
 }
